@@ -1,28 +1,29 @@
-angular.module('App.services', [])
+angular.module('App').factory('mainAdminFactory', function(FURL, $log,$state,$firebaseAuth, $firebaseArray, $firebaseObject) {
 
-.factory('FirebaseFunctions', function() {
+    //var ref = new Firebase(FURL);
+    firebase.initializeApp(FURL);
+    //var auth = $firebaseAuth(ref);
+    var ref = firebase.database().ref();
+    //var auth = $firebaseObject(ref);
+    var auth = $firebaseAuth();
 
-  FURL = {
-      apiKey: "AIzaSyDE-WMV8Pz4ZtIwReSGsK7O6uC4RqOhurY",
-      authDomain: "next-80843.firebaseapp.com",
-      databaseURL: "https://next-80843.firebaseio.com",
-      storageBucket: "next-80843.appspot.com",
+    var userDB = firebase.database().ref("users")
+
+    var mainAdminFactory = {
+
+        createFBProfile: function(user,phone) {
+            firebase.database().ref('users/' + user.uid).set({
+                name: user.displayName,
+                email: user.email,
+                phone: phone,
+                registered_in: Date()
+            });
+
+        },
+
     };
-
-
-	//var ref = new Firebase(FURL);
-  firebase.initializeApp(FURL);
-
-	//var auth = $firebaseAuth(ref);
-  //var auth = $firebaseObject(ref);
-  // var auth = $firebaseAuth();
-
-  var linesDB = firebase.database().ref('/lines/Wilfrid Laurier University/Bookstore').once('value').then(function(lineStuff) {
-    console.log(lineStuff.val())
-  });
-
-  FirebaseFunctions = linesDB;
-	return FirebaseFunctions;
-
+    return mainAdminFactory;
 
 });
+
+
