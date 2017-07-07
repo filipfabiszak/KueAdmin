@@ -38,7 +38,7 @@ angular.module('App', ['ionic', 'ngCordova','firebase'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
 
-  $ionicConfigProvider.tabs.position('top'); // other values: bottom
+  $ionicConfigProvider.tabs.position('bottom'); // other values: bottom
 })
 
 

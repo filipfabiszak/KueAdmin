@@ -1,29 +1,32 @@
-<ion-view view-title="IKue">
+<ion-view view-title="Currently Serving">
 
   <ion-content padding="true" class="has-header">
+
     <ion-list>
-      <ion-item class="item-avatar">
-        <img>
-        <h2>Upcoming3</h2>
+
+      <ion-item ng-repeat="user in users" class="item-content">
+        <h2>Position: {{$index+1}}</h2>
+        <h2>Name: <b><span>{{user.name}} </span> </b> </h2>
+        <h2>Phone Number: <span>{{user.phone}} </span> </h2>
       </ion-item>
-      <ion-item class="item-avatar">
-        <img>
-        <h2>Upcoming2</h2>
-      </ion-item>
-      <ion-item class="item-avatar">
-        <img>
-        <h2>Upcoming1</h2>
-      </ion-item>
+
     </ion-list>
+
     <div class="spacer" style="width: 748px; height: 57px;"></div>
-    <ion-item class="item-thumbnail-left">
-      <img>
-      <h2>Current</h2>
+    <ion-item class="item-content">
+      <h2><b>Current Customer </b></h2>
+      <h2>{{currentCust.name}}</h2>
+      <h2>{{currentCust.phone}}</h2>
     </ion-item>
     <div class="button-bar">
-      <button class="button button-positive button-large button-block button-clear">View Full Line</button>
-      <button class="button button-positive button-block button-outline">Reverse</button>
-      <button class="button button-positive button-large button-block" ng-click="popUser()">Pop Next</button>
+      <!--<button class="button button-positive button-large button-block button-clear">View Full Line</button>-->
+      <!--<button class="button button-positive button-block button-outline">Reverse</button>-->
+      <!--<button class="button button-positive button-large " ng-click="popUser()">Pop Next</button>-->
+
+      <button class="button button-small button-light" ion-button round>Previous Customer</button>
+      <button class="button button-small button-light" ion-button round ng-click="popUser()" >Next Customer</button>
+
+
     </div>
   </ion-content>
 

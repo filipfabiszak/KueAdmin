@@ -6,6 +6,8 @@ angular.module('App')
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
         function ($scope, $stateParams,mainAdminFactory) {
             $scope.currentLine=[];
+            $scope.users=[];
+            $scope.currentCust={};
             firebase.database().ref('lines/University of Waterloo/Bookstore').on('child_added', function(snapshot){
                 var a = snapshot.val().rem;
                 console.log(snapshot);
@@ -16,11 +18,70 @@ angular.module('App')
                 console.log($scope.currentLine);
                 });
 
+            firebase.database().ref('lines/University of Waterloo/Bookstore').on('child_added', function(snapshot){
+                var uid = snapshot.val().key;
+                console.log(uid);
+                if (uid != undefined || uid!=null ){
+
+                    var test = {};
+                    var info = [];
+                    firebase.database().ref('users/'+ uid ).once('value').then(function (snapshot){
+                        var name = snapshot.val().name;
+                        var phone = snapshot.val().phone;
+                        // info.push(name);
+                        // info.push(phone);
+                        test = {name: name, phone:phone};
+                        $scope.$apply(function () {
+                            $scope.users.push(test);
+                        });
+
+                    },function(error){
+
+
+                    });
+
+                    };
+                console.log("Info of line people");
+                console.log($scope.users);
+            });
+
+
+            firebase.database().ref('lines/University of Waterloo/Bookstore/current').on('child_added', function(snapshot){
+                console.log("Current triggered");
+                var uid = snapshot.val();
+                console.log(snapshot.val());
+
+
+                if (uid != {}) {
+                    firebase.database().ref('users/' + uid).once('value').then(function (snapshot) {
+                        var name = snapshot.val().name;
+                        var phone = snapshot.val().phone;
+                        console.log(name);
+                        // info.push(name);
+                        // info.push(phone);
+                        $scope.$apply(function () {
+                            $scope.currentCust = {name: name, phone: phone};
+                        });
+
+                    }, function (error) {
+
+
+                    });
+                }
+
+                    console.log("CURRENT NIGGA");
+                    console.log($scope.currentCust);
+
+
+
+            });
+
+
+
             $scope.popUser=function(){
                var uuid = $scope.currentLine.shift();
                console.log("popped!");
                console.log(uuid);
-
                firebase.database().ref('lines/University of Waterloo/Bookstore/'+ uuid ).once('value').then(function (snapshot) {
                     console.log("getting lines ");
                     var user = snapshot.val().key;
@@ -38,6 +99,7 @@ angular.module('App')
                        .then(function() {
                            console.log("Remove succeeded.")
                        })
+
                        .catch(function(error) {
                            console.log("Remove failed: " + error.message)
                        });
@@ -48,6 +110,11 @@ angular.module('App')
 
                 });
                console.log($scope.currentLine);
+            };
+
+            $scope.getLine = function () {
+
+
             }
 
 

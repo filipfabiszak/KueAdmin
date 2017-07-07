@@ -1,37 +1,11 @@
 <ion-view view-title="Full Line">
     <ion-content>
       <ion-list>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming1</h2>
+        <ion-item ng-repeat="user in users" class="item-content">
+          <h2>Position: {{$index+1}}</h2>
+          <h2>Name: <b><span>{{user.name}} </span> </b> </h2>
+          <h2>Phone Number: <span>{{user.phone}} </span> </h2>
         </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming2</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming3</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming4</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming5</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming5</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming6</h2>
-        </ion-item>
-        <ion-item class="item-avatar">
-          <img>
-          <h2>Upcoming7</h2>
         </ion-item>
       </ion-list>
   </ion-content>
