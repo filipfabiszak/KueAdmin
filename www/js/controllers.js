@@ -14,7 +14,6 @@ angular.module('App')
                 if (a != undefined || a!=null ){
                         $scope.currentLine.push(a);
                 };
-
                 console.log($scope.currentLine);
                 });
 
@@ -79,13 +78,26 @@ angular.module('App')
 
 
             $scope.popUser=function(){
+                firebase.database().ref('lines/University of Waterloo/Bookstore/current' ).once('value').then(function (snapshot) {
+                    if (snapshot.val().current){
+                        firebase.database().ref('users/'+snapshot.val().current+'/').once('value').then(function (snapshot) {
+                            if(snapshot.val().userCurrent){
+                                firebase.database().ref('users/'+user+'/').update({
+                                    "userCurrent":""
+                                });
+
+                            }
+                        });
+
+                    }
+                });
+
                var uuid = $scope.currentLine.shift();
                console.log("popped!");
                console.log(uuid);
                firebase.database().ref('lines/University of Waterloo/Bookstore/'+ uuid ).once('value').then(function (snapshot) {
                     console.log("getting lines ");
                     var user = snapshot.val().key;
-
                    // var fDB = firebase.database().ref();
                    // var dataKey = fDB.child('lines/University of Waterloo/Bookstore/current').push().key;
                    // var updates = {};
@@ -104,6 +116,9 @@ angular.module('App')
                            console.log("Remove failed: " + error.message)
                        });
 
+                   firebase.database().ref('users/'+user+'/').update({
+                      "userCurrent":"University of Waterloo,Bookstore"
+                   });
 
                 },function(error){
 
