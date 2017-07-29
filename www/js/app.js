@@ -30,7 +30,7 @@ angular.module('App', ['ionic', 'ngCordova','firebase'])
     views: {
       'tab-settings': {
         templateUrl: 'templates/tab-settings.html',
-        controller: 'MainCtrl'
+        controller: 'SettingsCtrl'
 
       }
     }
