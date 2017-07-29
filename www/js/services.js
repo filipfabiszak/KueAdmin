@@ -18,12 +18,9 @@ angular.module('App').factory('mainAdminFactory', function(FURL, $log,$state,$fi
                 phone: phone,
                 registered_in: Date()
             });
-
         },
 
     };
     return mainAdminFactory;
 
 });
-
-

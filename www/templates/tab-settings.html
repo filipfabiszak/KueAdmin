@@ -1,12 +1,17 @@
 <ion-view view-title="Settings">
   <ion-content>
+
     <div class="list" style="margin-bottom:0">
       <div class="card">
         <div class="item item-text-wrap">
-          <h1 class="box-blue">There's nothing here</h1>
+          <h1 class="box-blue">how many people would you like to pop at a time?</h1>
+          <ion-item class="range range-positive">Range Number
+            <input type="range" value="1" min="1" max="10" step="1">
+          </ion-item>
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="item item-text-wrap thin ">
         <p>
@@ -14,5 +19,6 @@
         </p>
       </div>
     </div>
+
   </ion-content>
 </ion-view>

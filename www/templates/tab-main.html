@@ -15,18 +15,14 @@
     <div class="spacer" style="width: 748px; height: 57px;"></div>
     <ion-item class="item-content">
       <h2><b>Current Customer </b></h2>
-      <h2>{{currentCust.name}}</h2>
-      <h2>{{currentCust.phone}}</h2>
+      <div>
+        <h1>{{currentCust.name}}</h1>
+        <h1>{{currentCust.phone}}</h1>
+      </div>
     </ion-item>
     <div class="button-bar">
-      <!--<button class="button button-positive button-large button-block button-clear">View Full Line</button>-->
-      <!--<button class="button button-positive button-block button-outline">Reverse</button>-->
-      <!--<button class="button button-positive button-large " ng-click="popUser()">Pop Next</button>-->
-
-      <button class="button button-small button-light" ion-button round>Previous Customer</button>
-      <button class="button button-small button-light" ion-button round ng-click="popUser()" >Next Customer</button>
-
-
+      <button class="button button-large" ion-button round ng-click="previousUser()">Previous Customer</button>
+      <button class="button button-positive button-large" ion-button round ng-click="nextUser()" >Next Customer</button>
     </div>
   </ion-content>
 
