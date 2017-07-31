@@ -9,6 +9,7 @@ angular.module('App')
             $scope.history=[];
             $scope.users=[];
             $scope.currentCust={};
+            var popNumber;
 
             firebase.database().ref('lines/University of Waterloo/Bookstore').on('child_added', function(snapshot){
                 console.log("User line update triggered by firebase change");
@@ -70,7 +71,16 @@ angular.module('App')
                 }
             });
 
+            firebase.database().ref('lines/University of Waterloo/Bookstore/meta/pop_amount' ).once('value').then(function (snapshot){
+                popNumber=snapshot.val();
+            });
+
             $scope.nextUser=function(){
+
+              for(var i=0; i < popNumber; i++){
+
+              }
+
                var uuid = $scope.currentLine.shift();
               //  console.log("line ID of popped customer: ",uuid);
                firebase.database().ref('lines/University of Waterloo/Bookstore/'+ uuid ).once('value').then(function (snapshot) {
@@ -138,16 +148,12 @@ angular.module('App')
         .controller('SettingsCtrl', ['$scope', '$stateParams','mainAdminFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams,mainAdminFactory) {
+        function ($scope, $stateParams,mainAdminFactory, _) {
+          $scope._ = _;
 
-
+          _.debounce($scope.updatePop=function(){
+            var popNumber = parseInt(document.getElementById("slider").value);
+            firebase.database().ref().child('lines/University of Waterloo/Bookstore/meta').update({pop_amount:popNumber});
+          }, 500)
 
         }]);
-//
-//
-// .controller('MainCtrl', function($scope, $stateParams) {
-//
-//
-//
-// })
-//

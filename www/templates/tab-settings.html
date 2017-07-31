@@ -8,7 +8,7 @@
           <form>
             <input oninput="rangeInput.value=amount.value" id="box" type="text" value="1" name="amount" for="rangeInput"  oninput="rangeInput.value=amount.value" />
             <ion-item class="range range-positive">
-              <input  for="amount" oninput="amount.value=rangeInput.value" id="slider" value="1" type="range" min="1" max="20" name="rangeInput" />
+              <input  for="amount" oninput="amount.value=rangeInput.value" id="slider" value="1" type="range" min="1" max="20" name="rangeInput" ng-model="SettingsCtrl" ng-change="updatePop()" />
             </ion-item>
           </form>
         </div>
