@@ -9982,7 +9982,8 @@ a.button {
   width: 65%;
   height: 100%;
   float: left;
-  vertical-align: middle; }
+  padding-left: 1%;
+  padding-right: 1%; }
 
 .sidebar {
   width: 15%;
@@ -9991,7 +9992,9 @@ a.button {
 
 .sidebar img {
   width: 100px;
-  height: 100px; }
+  height: 100px;
+  display: block;
+  margin: 0 auto; }
 
 .lineview {
   width: 20%;
@@ -10002,9 +10005,8 @@ a.button {
   display: block;
   margin: 0 auto; }
 
-img {
-  display: block;
-  margin: 0 auto; }
+.lineview h2 {
+  text-align: center; }
 
 .chart-legend,
 .bar-legend,

@@ -27,7 +27,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   width: 65%;
   height: 100%;
   float: left;
-  vertical-align: middle;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 .sidebar{
   width: 15%;
@@ -37,6 +38,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .sidebar img{
   width: 100px;
   height: 100px;
+  display: block;
+  margin: 0 auto;
 }
 .lineview{
   width: 20%;
@@ -47,9 +50,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   display: block;
   margin: 0 auto;
 }
-img{
-  display: block;
-  margin: 0 auto;
+.lineview h2{
+  text-align: center;
 }
 
 
