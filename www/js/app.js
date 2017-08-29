@@ -2,48 +2,43 @@
 angular.module('App', ['ionic', 'ngCordova','firebase'])
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $stateProvider
-  .state('tab', {
-    url: '/tab',
+  .state('app', {
+    url: '/app',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/menu.html'
   })
-  .state('tab.full-line', {
+  .state('app.dashboard', {
+    url: '/dashboard',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/dashboard.html',
+        controller: 'MainCtrl'
+      }
+    }
+  })
+  .state('app.full-line', {
     url: '/full-line',
     views: {
-      'tab-full-line': {
-        templateUrl: 'templates/tab-full-line.html',
+      'menuContent': {
+        templateUrl: 'templates/full-line.html',
         controller: 'MainCtrl'
       }
     }
   })
-  .state('tab.main', {
-    url: '/main',
-    views: {
-      'tab-main': {
-        templateUrl: 'templates/tab-main.html',
-        controller: 'MainCtrl'
-      }
-    }
-  })
-  .state('tab.settings', {
+  .state('app.settings', {
     url: '/settings',
     views: {
-      'tab-settings': {
-        templateUrl: 'templates/tab-settings.html',
-        controller: 'SettingsCtrl'
-
+      'menuContent': {
+        templateUrl: 'templates/settings.html',
+        controller: 'MainCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/main');
+  $urlRouterProvider.otherwise('/app/dashboard');
 
   $ionicConfigProvider.tabs.position('bottom'); // other values: bottom
 })
-
-
-// Changue this for your Firebase App URL.
-
     .constant('FURL', {
             apiKey: "AIzaSyDE-WMV8Pz4ZtIwReSGsK7O6uC4RqOhurY",
             authDomain: "next-80843.firebaseapp.com",

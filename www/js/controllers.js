@@ -144,16 +144,10 @@ angular.module('App')
                   firebase.database().ref('lines/University of Waterloo/Bookstore/history/'+ uuid).remove();
                });
             };
-        }])
-        .controller('SettingsCtrl', ['$scope', '$stateParams','mainAdminFactory', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-        // You can include any angular dependencies as parameters for this function
-        // TIP: Access Route Parameters for your page via $stateParams.parameterName
-        function ($scope, $stateParams,mainAdminFactory, _) {
-          $scope._ = _;
 
-          _.debounce($scope.updatePop=function(){
-            var popNumber = parseInt(document.getElementById("slider").value);
-            firebase.database().ref().child('lines/University of Waterloo/Bookstore/meta').update({pop_amount:popNumber});
-          }, 500)
+            $scope.updatePop=function(){
+              var popNumber = parseInt(document.getElementById("slider").value);
+              firebase.database().ref().child('lines/University of Waterloo/Bookstore/meta').update({pop_amount:popNumber});
+            }
 
         }]);

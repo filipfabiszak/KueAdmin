@@ -1,0 +1,50 @@
+<ion-view view-title="Laurier Bookstore">
+  <ion-content padding="true" class="has-header">
+
+    <div class="sidebar">
+      <ion-list>
+        <img src="img/logo.png">
+        <ion-item menu-close href="#/app/dashboard">
+          Dashboard
+        </ion-item>
+        <ion-item menu-close href="#/app/dashboard">
+          Analytics
+        </ion-item>
+        <ion-item menu-close href="#/app/settings">
+          Settings
+        </ion-item>
+        <ion-item menu-close ng-click="logout()">
+          Logout
+        </ion-item>
+        <img src="img/logo.png">
+      </ion-list>
+    </div>
+
+    <div class="content">
+      <ion-item class="item-content">
+        <h1 align="center"><b>Now Serving: </b></h1>
+        <div>
+          <h1 align="center">{{currentCust.name}}</h1>
+          <h1 align="center">{{currentCust.phone}}</h1>
+        </div>
+      </ion-item>
+      <div class="button-bar">
+        <button class="button button-large" ion-button round ng-click="previousUser()">Reverse</button>
+        <button class="button button-positive button-large" ion-button round ng-click="nextUser()" >Next</button>
+      </div>
+    </div>
+
+    <div class="lineview">
+      <ion-list>
+        <button class="button button-positive button-large" ion-button round href="#/app/full-line" >View Line</button>
+        <div class="spacer" style="height: 25px;"></div>
+        <ion-item ng-repeat="user in users" class="item-content">
+          <h2><b><span>{{user.name}} </span> </b> </h2>
+          <h2><span>{{user.phone}} </span> </h2>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </ion-content>
+
+</ion-view>
