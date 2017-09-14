@@ -7,6 +7,15 @@ angular.module('App', ['ionic', 'ngCordova','firebase'])
     abstract: true,
     templateUrl: 'templates/menu.html'
   })
+  .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html',
+        controller: 'MainCtrl'
+      }
+    }
+  })
   .state('app.dashboard', {
     url: '/dashboard',
     views: {

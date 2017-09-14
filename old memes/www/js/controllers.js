@@ -10,6 +10,8 @@ angular.module('App')
             $scope.users=[];
             $scope.currentCust={};
             var popNumber;
+            var leadMeApiKey = '$2a$04$qbPesY2yCuQnQ0eVd0ymsuto/KGgO497opQIZV7vMOoj6o5ZmQ/Lm';
+            var hubGroupKey = '$2y$10$BctxNm0uEbkTxeFGaW93Me1E7cammc3Hq396u39kEx1eqbqRCQkbS';
 
             firebase.database().ref('lines/University of Waterloo/Bookstore').on('child_added', function(snapshot){
                 console.log("User line update triggered by firebase change");
@@ -77,9 +79,9 @@ angular.module('App')
 
             $scope.nextUser=function(){
 
-              for(var i=0; i < popNumber; i++){
-
-              }
+              // for(var i=0; i < popNumber; i++){
+              //
+              // }
 
                var uuid = $scope.currentLine.shift();
               //  console.log("line ID of popped customer: ",uuid);
@@ -100,7 +102,25 @@ angular.module('App')
                    firebase.database().ref('users/'+user+'/').update({"userCurrent":"University of Waterloo,Bookstore"});
                    firebase.database().ref('lines/University of Waterloo/Bookstore/'+ uuid).remove()
                        .then(function() {
-                           console.log("Remove succeeded.")
+                           console.log("Remove succeeded. POSTing API data");
+                           var poppedUserLeadmeId;
+
+                          //  $http({
+                          //     method: 'POST',
+                          //     url: 'http://www.leadme.ca/api/data',
+                          //     data:{
+                          //       "userId": hubGroupKey,
+                          //       "leadId": 123,
+                          //       "location": "Popped"
+                          //     }
+                          //   }).then(
+                          //     function successCallback(response) {
+                          //       console.log("Remove succeeded. LeadMe metric updated");
+                          //     },
+                          //     function errorCallback(response) {
+                          //       console.log("Remove succeeded. LeadMe metric failed")
+                          //     });
+
                            $scope.$apply(function () {
                               $scope.users.shift();
                            });
