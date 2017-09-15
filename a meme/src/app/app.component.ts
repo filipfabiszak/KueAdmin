@@ -3,8 +3,10 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { Login } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { Login } from '../pages/login/login';
+
 
 import firebase from 'firebase';
 

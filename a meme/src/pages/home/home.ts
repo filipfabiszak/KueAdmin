@@ -1,54 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
-
-// Import pages to allow links to the page
-import { CategoryPage } from '../../pages/category/category';
-
-// Service import for items
-import { ItemApi } from '../../services/service';
+import { LineService } from '../services/line-service';
+import { PhonePage }from'../phone/phone';
+import { NoPhonePage }from'../no-phone/no-phone';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [Http]
+  templateUrl: 'home.html'
 })
-export class HomePage {
 
-  // The items array to populate with data is created
-  items: any;
+export class HomePage implements OnInit {
 
-  constructor(
-              public navCtrl: NavController,
-              public params:NavParams,
-              private itemApi: ItemApi
-            )
-            {}
+  public size: number;
+  public serving: string;
+  public lineName: string;
 
-  // This is where the data loads from the service.
-  // It happens when the view loads for the first time.
-  ionViewDidLoad() {
-    this.itemApi.getItems().then(data => this.items = data);
-  }
+  constructor(public nav: NavController, public navParams: NavParams, public navCtrl: NavController, public lineService: LineService) {}
 
-  // This function is an event to listen to clicks on elements.
-  // The SingleItem Page has been included to be passed in this function.
-  CategoryTapped($event, category) {
-    this.navCtrl.push(CategoryPage, {
-        category: 'Fantasticness'
-    });
-  }
+    ngOnInit(){
+        this.updateLineInfo();
+        this.getLineSize();
+        this.getServing();
+    }
 
-  CategoryTapped_2($event, category) {
-    this.navCtrl.push(CategoryPage, {
-        category: 'Short'
-    });
-  }
+    updateLineInfo(){
+        let homeController = this;
+        this.lineService.setServing();
+        this.lineService.setLineSize();
+        this.lineService.getLineName(function(name){
+            homeController.lineName = name.split('_').join(' ');
+            console.log(homeController.lineName);
+        });
+    }
 
-  CategoryTapped_3($event, category) {
-    this.navCtrl.push(CategoryPage, {
-        category: 'Booperness'
-    });
-  }
+    getLineSize(){
+        this.lineService.lineSize.subscribe(size => this.size = size);
+    }
 
+    getServing(){
+        this.lineService.serving.subscribe(serving => this.serving = serving);
+    }
 }
