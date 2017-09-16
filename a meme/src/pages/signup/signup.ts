@@ -3,9 +3,9 @@ import { IonicPage, NavController, NavParams, LoadingController,
     AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
-import { HomePage } from '../home/Hhme';
-import { AuthData } from '../services/auth-data';
-import { LineService } from '../services/line-service';
+import { HomePage } from '../home/home';
+import { AuthData } from '../../services/auth-data';
+import { LineService } from '../../services/line-service';
 
 /**
  * Generated class for the Signup page.
@@ -52,9 +52,6 @@ export class Signup {
                 .then(() => {
                     this.lineService.createLine(this.signupForm.value.company,this.signupForm.value.line);
                     this.loading.dismiss().then(() => {
-                        this.lineService.getLineRef(function(DBLineRef){
-                            signupRef.lineService.startNotifications(DBLineRef);
-                        });
                         this.nav.setRoot(HomePage);
                     });
                 }, (error) => {

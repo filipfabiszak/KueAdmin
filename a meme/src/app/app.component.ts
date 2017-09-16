@@ -3,10 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { Login } from '../pages/login/login';
-
 
 import firebase from 'firebase';
 
@@ -14,32 +11,17 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = Login;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    // Initialize Firebase
     var config = {
       apiKey: "AIzaSyDE-WMV8Pz4ZtIwReSGsK7O6uC4RqOhurY",
       authDomain: "next-80843.firebaseapp.com",
-      databaseURL: "https://next-80843.firebaseio.com",
-      storageBucket: "next-80843.appspot.com",
-      messagingSenderId: "244563636043",
+      databaseURL: "https://next-80843.firebaseio.com"
     };
     firebase.initializeApp(config);
-    firebase.auth().onAuthStateChanged((user) => {
-        // this.rootPage = Login;
-
-        if (!user) {
-            console.log("not login");
-            // this.rootPage = Login;
-
-
-        } else {
-            console.log("login");
-            // this.rootPage = HomePage;
-
-        }
-
+    firebase.auth().onAuthStateChanged(() => {
+        this.rootPage = Login;
     });
 
     platform.ready().then(() => {

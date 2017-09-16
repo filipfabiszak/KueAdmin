@@ -22,10 +22,9 @@ export class AuthData {
    * @param  {string} password [User's password]
    */
   loginUser(email: string, password: string): firebase.Promise<any> {
-
     this.leadmeService.leadmeLogin(email,password);
     return firebase.auth().signInWithEmailAndPassword(email, password);
-    
+
   }
 
   /**

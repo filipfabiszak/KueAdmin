@@ -6,7 +6,7 @@ import { Login } from './login';
   declarations: [
     Login,
   ],
- 
+
   exports: [
     Login
   ]

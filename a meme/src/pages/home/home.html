@@ -1,10 +1,56 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>IKue</ion-title>
+    <ion-title>{{lineName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding="true" class="has-header">
+
+  <div class="sidebar">
+    <ion-list>
+      <img class="centered padding-top logo" src="assets/img/logo.png">
+      <ion-item menu-close href="#/app/dashboard">
+        Line Management
+      </ion-item>
+      <ion-item menu-close href="#/app/dashboard">
+        Analytics Dashboard
+      </ion-item>
+      <ion-item menu-close href="#/app/settings">
+        Settings
+      </ion-item>
+      <ion-item menu-close ng-click="logout()">
+        Logout
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="content">
+    <div class="spacer" style="height: 20%;"></div>
+    <ion-item class="item-content">
+      <h1 align="center"><b>Now Serving: </b></h1>
+      <div>
+        <h1 align="center">{{serving.name}}</h1>
+        <h1 align="center">{{serving.phone}}</h1>
+      </div>
+    </ion-item>
+    <div class="button-bar">
+      <button class="reverse" ion-button (click)="previousUser()">Reverse</button>
+      <button ion-button  (click)="nextUser()" >Next</button>
+    </div>
+  </div>
+
+  <div class="lineview">
+    <ion-list>
+      <button class="button button-positive button-large" ion-button (click)="showFullLine()" >View Line</button>
+      <!-- <div class="spacer" style="height: 15px;"></div> -->
+      <!-- <ion-item *ngFor="let user of line" class="item-content">
+        <h2><b><span>{{user.name}} </span> </b> </h2>
+        <h2><span>{{user.phone}} </span> </h2>
+      </ion-item> -->
+    </ion-list>
+  </div>
+
+<!-- <ion-content padding>
   <div class="text-center">
     <div class="row">
       <div class="col-md-8">
@@ -18,7 +64,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <img class="centered padding-top logo" src="assets/icon/logo.png">
+        <img class="centered padding-top logo" src="assets/img/logo.png">
       </div>
     </div>
     <div class="row text-center padding-large-top">
@@ -34,5 +80,7 @@
         <button ion-button large color="danger" (click)="goToNoPhone()">No Phone</button>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
 </ion-content>

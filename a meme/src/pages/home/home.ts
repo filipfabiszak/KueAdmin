@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { LineService } from '../services/line-service';
-import { PhonePage }from'../phone/phone';
-import { NoPhonePage }from'../no-phone/no-phone';
+import { LineService } from '../../services/line-service';
 
 @Component({
   selector: 'page-home',
@@ -12,10 +10,13 @@ import { NoPhonePage }from'../no-phone/no-phone';
 export class HomePage implements OnInit {
 
   public size: number;
-  public serving: string;
+  public serving: Object;
   public lineName: string;
 
-  constructor(public nav: NavController, public navParams: NavParams, public navCtrl: NavController, public lineService: LineService) {}
+  constructor(public nav: NavController,
+    public navParams: NavParams,
+    public navCtrl: NavController,
+    public lineService: LineService) {}
 
     ngOnInit(){
         this.updateLineInfo();
@@ -31,6 +32,18 @@ export class HomePage implements OnInit {
             homeController.lineName = name.split('_').join(' ');
             console.log(homeController.lineName);
         });
+    }
+
+    nextUser(){
+      this.lineService.nextUser();
+    }
+
+    previousUser(){
+      this.lineService.previousUser();
+    }
+
+    showFullLine(){
+      // this.nav.push(FullLine);
     }
 
     getLineSize(){

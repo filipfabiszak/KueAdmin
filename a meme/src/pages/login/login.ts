@@ -5,10 +5,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { EmailValidator } from '../../validators/email';
 import { HomePage }from'../home/home';
-import { AuthData } from '../services/auth-data';
-import { LineService } from '../services/line-service';
+import { AuthData } from '../../services/auth-data';
+import { LineService } from '../../services/line-service';
 
-import { ResetPassword } from '../reset-password/reset-password';
 import { Signup } from '../signup/signup';
 
 /**
@@ -26,10 +25,10 @@ export class Login {
     public loginForm;
     loading: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,
-                public formBuilder: FormBuilder, public lineService: LineService,
-                public alertCtrl: AlertController, public loadingCtrl: LoadingController,
-                public authData: AuthData, public nav: NavController) {
+    constructor(public navParams: NavParams, public formBuilder: FormBuilder,
+                public lineService: LineService, public alertCtrl: AlertController,
+                public loadingCtrl: LoadingController, public authData: AuthData, 
+                public nav: NavController) {
 
         this.loginForm = formBuilder.group({
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -45,9 +44,6 @@ export class Login {
         } else {
             this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.lineService.getLineRef(function(DBLineRef){
-                        loginRef.lineService.startNotifications(DBLineRef);
-                    });
                     this.nav.setRoot(HomePage);
                 });
             }, error => {
@@ -72,9 +68,5 @@ export class Login {
 
     goToSignup(): void {
         this.nav.push(Signup);
-    }
-
-    goToResetPassword(): void {
-        this.nav.push(ResetPassword);
     }
 }
