@@ -44,8 +44,7 @@ export class LineService {
           },
           meta: {
             avg_wait_time: 0,
-            pop_amount: 1,
-            wait_time: 0
+            pop_amount: 1
           }
         }
         updates['lines/' + company + '/' + line] = initialLine;
@@ -79,6 +78,7 @@ export class LineService {
             callback(name);
         });
     }
+
     getLineName(callback){
         console.log('Querying for line name...');
         let uid = firebase.auth().currentUser.uid;
@@ -88,6 +88,7 @@ export class LineService {
             callback(name);
         });
     }
+
     setServing(){
         console.log('Querying for current customer...');
         let service = this;

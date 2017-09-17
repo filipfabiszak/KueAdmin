@@ -17,24 +17,6 @@ export class LeadmeService{
     }
 
     /**
-     * [leadmeLogin description]
-     * Will take an email and password and log the user into the Leadme platform.
-     * @param  {string} email    [User's email address]
-     * @param  {string} password [User's password]
-     */
-    leadmeLogin(email, password) {
-
-        let service = this;
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('http://gentle-forest-16873.herokuapp.com/leadmeLogin',
-            JSON.stringify({email:email,password:password}),
-            {headers:headers})
-            .map((res: Response) => res.json())
-            .subscribe((res) => service.leadmeId.next(res.id));
-    }
-
-    /**
      * [leadmeRegister description]
      * This function will take the user's email and password and create a new account on the Leadme platform, once it does
      * it's going to log the user in and create a node in the leadmeUsers child with the user's Leadme id. This also sets the
@@ -71,7 +53,6 @@ export class LeadmeService{
      * @param  {string} pass  [User's password]
      * @param  {string} name  [User's name]
      */
-
     leadmeRegisterCustomer(name, email, pass) {
 
         let userId = '';
@@ -109,13 +90,29 @@ export class LeadmeService{
     }
 
     /**
+     * [leadmeLogin description]
+     * Will take an email and password and log the user into the Leadme platform.
+     * @param  {string} email    [User's email address]
+     * @param  {string} password [User's password]
+     */
+    leadmeLogin(email, password) {
+        let service = this;
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('http://gentle-forest-16873.herokuapp.com/leadmeLogin',
+            JSON.stringify({email:email,password:password}),
+            {headers:headers})
+            .map((res: Response) => res.json())
+            .subscribe((res) => service.leadmeId.next(res.id));
+    }
+
+    /**
      * [leadmeData description]
      * This function will take the the IKue id of a user joining the line and register the interaction with the
      * Leadme platform.
      * @param  {string} leadId
      * @param  {string} location
      */
-
     leadmeData(leadId,location) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -124,5 +121,9 @@ export class LeadmeService{
             {headers:headers})
             .map((res: Response) => res.json())
             .subscribe((res) => console.log(res));
+    }
+
+    openLeadmeDashboard(){
+      var newWindow = window.open('http://www.leadme.ca/home');
     }
 }

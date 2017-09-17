@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LineService } from '../../services/line-service';
+import { LeadmeService } from '../../services/leadme-service';
 
 @Component({
   selector: 'page-home',
@@ -17,7 +18,8 @@ export class HomePage implements OnInit {
   constructor(public nav: NavController,
     public navParams: NavParams,
     public navCtrl: NavController,
-    public lineService: LineService) {}
+    public lineService: LineService,
+    public leadmeService: LeadmeService) {}
 
     ngOnInit(){
         this.updateLineInfo();
@@ -57,5 +59,9 @@ export class HomePage implements OnInit {
 
     getServing(){
         this.lineService.serving.subscribe(serving => this.serving = serving);
+    }
+
+    leadmeRedirect(){
+      this.leadmeService.openLeadmeDashboard();
     }
 }
