@@ -31,9 +31,10 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 node_modules/
-www/
 platforms/
 plugins/
+
+# www/
 
 # User-specific stuff:
 .idea/**/workspace.xml
