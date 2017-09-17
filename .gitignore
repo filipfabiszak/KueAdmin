@@ -17,7 +17,6 @@ npm-debug.log*
 .tmp/
 .versions/
 coverage/
-node_modules/
 tmp/
 temp/
 hooks/
@@ -32,6 +31,7 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 node_modules/
+www/
 platforms/
 plugins/
 
