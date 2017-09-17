@@ -1,8 +1,23 @@
 page-login {
+
   .logo {
     width: 100px;
+    padding-top: 2%;
   }
+
   .padding-large-top{
     margin-top: 50px;
+  }
+
+  .toolbar-background{
+    background: #aa1d1d
+  }
+
+  .toolbar-title{
+    color: #f7f7f7
+  }
+
+  .button-clear-md{
+    color: #f00202
   }
 }

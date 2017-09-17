@@ -38,7 +38,8 @@
 // Global back button styling
 // ----------------------------------------------------------------------------------
 .back-button {
-    color: $black !important;//what ever the color you like
+    // color: $black !important;//what ever the color you like
+    color: #f7f7f7 !important; 
 }
 
 // ----------------------------------------------------------------------------------
@@ -189,7 +190,8 @@ a {
     font-size: 13px;
     font-weight: $medium;
     letter-spacing: 1px;
-    background-color: $blue;
+    // background-color: $blue;
+    background-color: #aa1d1d;
     color: $white;
     text-shadow: none;
     text-transform: uppercase;

@@ -3,8 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { LineService } from '../../services/line-service';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-settings',
+  templateUrl: 'settings.html'
 })
 
 export class SettingsPage implements OnInit {
@@ -17,5 +17,5 @@ export class SettingsPage implements OnInit {
 
     ngOnInit(){
     }
-    
+
 }
