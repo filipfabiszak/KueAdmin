@@ -1,0 +1,7 @@
+{
+  "name": "IKue Admin Login",
+  "description": "Admin Dashboard for Ikue",
+  "repository": "https://github.com/filipfabiszak/KueAdmin",
+  "logo": "https://github.com/filipfabiszak/KueAdmin/src/assets/img/logo.png",
+  "keywords": ["ionic", "static", "ionic2", "ionic3"]
+}
