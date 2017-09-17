@@ -98,7 +98,6 @@ export class LeadmeService{
      * @param  {string} password [User's password]
      */
     leadmeLoginCustomer(email, password) {
-
         let service = this;
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -118,11 +117,10 @@ export class LeadmeService{
      */
 
     leadmeData(leadId,location) {
-
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://gentle-forest-16873.herokuapp.com/leadmeData',
-            JSON.stringify({lead:leadId,user:this.leadmeId,location:location}),
+            JSON.stringify({lead:leadId,user:this.leadmeId,location:"ExitLine"}),
             {headers:headers})
             .map((res: Response) => res.json())
             .subscribe((res) => console.log(res));

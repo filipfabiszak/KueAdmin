@@ -71,6 +71,7 @@ export class LineService {
         //     });
         // });
     }
+
     getLineRef(callback){
         let uid = firebase.auth().currentUser.uid;
         firebase.database().ref('users/'+uid).once('value').then(function (snapshot) {

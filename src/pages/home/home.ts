@@ -9,9 +9,10 @@ import { LineService } from '../../services/line-service';
 
 export class HomePage implements OnInit {
 
+  public lineName: string;
   public size: number;
   public serving: Object;
-  public lineName: string;
+  public line: any[];
 
   constructor(public nav: NavController,
     public navParams: NavParams,
@@ -42,8 +43,12 @@ export class HomePage implements OnInit {
       this.lineService.previousUser();
     }
 
+    showSettings(){
+      // this.nav.push(SettingsPage);
+    }
+
     showFullLine(){
-      // this.nav.push(FullLine);
+      // this.nav.push(FullLinePage);
     }
 
     getLineSize(){
