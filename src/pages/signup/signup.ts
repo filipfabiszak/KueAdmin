@@ -24,9 +24,12 @@ export class Signup {
     loading: any;
 
 
-    constructor(public nav: NavController, public authData: AuthData,
-        public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController, public lineService: LineService) {
+    constructor(public nav: NavController,
+      public authData: AuthData,
+      public formBuilder: FormBuilder,
+      public loadingCtrl: LoadingController,
+      public alertCtrl: AlertController,
+      public lineService: LineService) {
 
         this.signupForm = formBuilder.group({
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -60,9 +63,9 @@ export class Signup {
                             this.authData.loginUser(this.signupForm.value.email, this.signupForm.value.password).then(authData => {
                                 this.loading.dismiss().then(() => {
                                     this.lineService.createLine(this.signupForm.value.company,this.signupForm.value.line);
-                                    this.lineService.getLineRef(function(DBLineRef){
-                                        this.lineService.startNotifications(DBLineRef);
-                                    });
+                                    // this.lineService.getLineRef(function(DBLineRef){
+                                    //     this.lineService.startNotifications(DBLineRef);
+                                    // });
                                     this.nav.setRoot(HomePage);
                                 });
                             }, error => {

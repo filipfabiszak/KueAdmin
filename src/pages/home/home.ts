@@ -23,13 +23,15 @@ export class HomePage implements OnInit {
 
     ngOnInit(){
         this.updateLineInfo();
-        this.getLineSize();
         this.getServing();
+        this.getLine();
+        this.getLineSize();
     }
 
     updateLineInfo(){
         let homeController = this;
         this.lineService.setServing();
+        this.lineService.setLine();
         this.lineService.setLineSize();
         this.lineService.getLineName(function(name){
             homeController.lineName = name.split('_').join(' ');
@@ -39,10 +41,12 @@ export class HomePage implements OnInit {
 
     nextUser(){
       this.lineService.nextUser();
+      this.getLine();
     }
 
     previousUser(){
       this.lineService.previousUser();
+      this.getLine();
     }
 
     showSettings(){
@@ -55,6 +59,10 @@ export class HomePage implements OnInit {
 
     getLineSize(){
         this.lineService.lineSize.subscribe(size => this.size = size);
+    }
+
+    getLine(){
+        this.line = this.lineService.getUsers();
     }
 
     getServing(){

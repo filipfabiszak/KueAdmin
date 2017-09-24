@@ -24,7 +24,6 @@ export class AuthData {
   loginUser(email: string, password: string): firebase.Promise<any> {
     this.leadmeService.leadmeLogin(email,password);
     return firebase.auth().signInWithEmailAndPassword(email, password);
-
   }
 
   /**
@@ -37,20 +36,15 @@ export class AuthData {
    * @param  {string} name [User's name]
    */
   signupUser(email: string, password: string, name: string): firebase.Promise<any> {
-
       let service = this;
-
       return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
-
         let uid = newUser.uid;
-
         firebase.database().ref('users/'+uid).set({
           name: name,
           email: email,
           userCurrent: "",
           registered_in: Date()
         });
-
         service.leadmeService.leadmeRegister(name,email,password);
     });
   }
