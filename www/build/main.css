@@ -25420,31 +25420,33 @@ page-home .inner {
   margin-top: 20px;
 }
 
-page-home .logo {
-  width: 100px;
-}
-
 page-home .padding-large-top {
   margin-top: 50px;
 }
 
 page-home .button-bar {
   text-align: center;
+  padding: 0.5em;
 }
 
 page-home .reverse {
-  margin-right: 10%;
+  margin-right: 20%;
 }
 
-page-home .content {
+page-home .serving {
+  width: 60%;
   height: 100%;
   float: left;
-  padding-left: 20%;
-  padding-right: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+page-home .item-content {
+  height: 18%;
 }
 
 page-home .sidebar {
-  width: 15%;
+  width: 18%;
   height: 100%;
   float: left;
 }
@@ -25457,7 +25459,7 @@ page-home .sidebar img {
 }
 
 page-home .lineview {
-  width: 20%;
+  width: 22%;
   height: 100%;
   float: right;
 }

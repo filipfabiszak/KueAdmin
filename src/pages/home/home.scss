@@ -24,32 +24,33 @@ page-home {
     margin-top: 20px;
   }
 
-  .logo{
-    width: 100px;
-
-  }
-
   .padding-large-top{
     margin-top: 50px;
   }
 
   .button-bar{
     text-align: center;
+    padding: 0.5em;
   }
 
   .reverse{
-    margin-right: 10%;
+    margin-right: 20%;
   }
 
-  .content {
+  .serving {
+  width: 60%;
   height: 100%;
   float: left;
-  padding-left: 20%;
-  padding-right: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.item-content{
+  height: 18%;
 }
 
 .sidebar{
-  width: 15%;
+  width: 18%;
   height: 100%;
   float: left;
 }
@@ -61,7 +62,7 @@ page-home {
 }
 
 .lineview{
-  width: 20%;
+  width: 22%;
   height: 100%;
   float: right;
 }
