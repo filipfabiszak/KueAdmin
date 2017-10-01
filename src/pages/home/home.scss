@@ -26,6 +26,7 @@ page-home {
 
   .logo{
     width: 100px;
+
   }
 
   .padding-large-top{
@@ -41,11 +42,10 @@ page-home {
   }
 
   .content {
-  width: 65%;
   height: 100%;
   float: left;
-  padding-left: 1%;
-  padding-right: 1%;
+  padding-left: 20%;
+  padding-right: 2%;
 }
 
 .sidebar{
@@ -59,15 +59,18 @@ page-home {
   display: block;
   margin: 0 auto;
 }
+
 .lineview{
   width: 20%;
   height: 100%;
   float: right;
 }
+
 .lineview button{
   display: block;
   margin: 0 auto;
 }
+
 .lineview h2{
   text-align: center;
 }
