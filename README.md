@@ -1,5 +1,5 @@
 # KueAdmin
-Admin app - ayy lmao
+Admin app
 
 1. Download this project
 2. cd KueAdmin
